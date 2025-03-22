@@ -15,7 +15,7 @@ export default function BrandLogo({
   return (
     <div className="flex flex-col items-center w-full h-auto">
       {variant === "horizontal" ? (
-        <div className="w-full max-w-[150px] h-auto">
+        <div className="w-full max-w-[120px] sm:max-w-[150px] h-auto">
           <Image
             src="/horizontal.svg"
             alt="Horizontal Logo"

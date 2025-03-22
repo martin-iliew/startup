@@ -135,7 +135,7 @@
 
   /* Margins */
   --margin-mobile: 1rem; /* 16px */
-  --margin-tablet: 1.5rem; /* 24px */
+  --margin-tablet: 2rem; /* 24px */
   --margin-desktop: 3rem; /* 96px */
 
   /* Max Widths */
@@ -159,6 +159,7 @@
     width: 100%;
   }
   .section-offset {
+    --margin: 2rem;
     margin: 0 var(--margin);
   }
   .header-offset {
