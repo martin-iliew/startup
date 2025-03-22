@@ -1,35 +1,73 @@
 import { Button } from "@/components/ui/button";
 import { Header } from "@/components/Header";
+import Image from "next/image";
 export default function HomePage() {
   return (
     <>
       <Header />
       <section
         aria-label="Hero Section"
-        className="py-12 sm:py-16 lg:py-24 min-h-[calc(100svh+4.5rem)] bg-black"
+        className="py-12 sm:py-16 lg:py-24 min-h-[calc(100svh+4.5rem)]"
       >
-        <div className="section-offset">
-          <div className="grid-layout">
-            <div className="col-span-4 md:col-span-8 lg:col-span-12 flex flex-col justify-center gap-6 text-white">
-              <h1 className="text-9xl sm:text-5xl lg:text-6xl font-black uppercase">
-                Банкирането и <br />
-                отвъд
-              </h1>
-              <h1 className="text-title-page">
-                Банкирането и <br />
-                отвъд
-              </h1>
+        <div className="grid-layout py-10 grid grid-cols-12 gap-8 items-center">
+          {/* Desktop Panda (Left) */}
+          <div className="col-span-12 md:col-span-6 hidden md:flex justify-center">
+            <Image
+              src="/panda.svg"
+              alt="Panda"
+              width={400}
+              height={400}
+              className="w-full max-w-md h-auto"
+              priority
+            />
+          </div>
 
-              <p className="text-lg sm:text-xl lg:text-2xl">
-                Без значение дали сте у дома или на път – нека Revolut надмине
-                очакванията ви за банкиране. Регистрирайте се лесно и безплатно.
-              </p>
-              <div className="flex flex-col md:flex-row gap-4">
-                <Button variant="default" size="lg">
-                  Изтеглете приложението
-                </Button>
+          {/* Text (always above on mobile) */}
+          <div className="col-span-12 md:col-span-6 flex flex-col justify-center gap-4 text-center md:text-left">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black uppercase text-stone-900 leading-tight">
+              Discover Your Perfect Match
+            </h1>
+            <h2 className="text-lg sm:text-xl md:text-2xl font-semibold text-stone-800">
+              The Right Major & University For You
+            </h2>
+            <p className="text-sm sm:text-base md:text-lg lg:text-xl text-stone-700 max-w-prose mx-auto md:mx-0">
+              Not sure what to study or where? <br />
+              Sign up to unlock our expert quiz and get personalized university
+              and major recommendations based on your interests, budget, and
+              career goals.
+            </p>
+
+            {/* Desktop CTA */}
+            <div className="mt-6 hidden md:block">
+              <Button
+                size="lg"
+                className="rounded-full bg-stone-900 text-white px-8 py-4 text-base font-semibold"
+              >
+                Get Started
+              </Button>
+            </div>
+          </div>
+
+          {/* Mobile Panda + Button: below the text */}
+          <div className="col-span-12 flex md:hidden items-center justify-center gap-4 mt-6">
+            <div className="w-24 sm:w-32">
+              <div className="w-32 sm:w-40">
+                <Image
+                  src="/panda.svg"
+                  alt="Panda"
+                  width={160}
+                  height={160}
+                  className="w-full h-auto"
+                  priority
+                />
               </div>
             </div>
+            <Button
+              size="lg"
+              className="rounded-full bg-stone-900 text-white px-6 py-3 text-sm font-semibold"
+            >
+              Get Started
+            </Button>
           </div>
         </div>
       </section>
