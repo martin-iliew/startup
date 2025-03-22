@@ -72,7 +72,7 @@ const Header = () => {
       }`}
     >
       <div className="section-offset">
-        <div className="flex h-8 sm:h-10 md:h-18 items-center justify-between">
+        <div className="flex h-18 items-center justify-between">
           {/* Left: Logo */}
           <div className="left flex items-center gap-4">
             <Link href="/" className="block">
