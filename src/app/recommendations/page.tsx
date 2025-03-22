@@ -1,7 +1,8 @@
 "use client";
 import { useEffect, useState } from "react";
 import { ArrowRight, ChevronDown } from "lucide-react";
-
+import { Button } from "@/components/ui/button";
+import Image from "next/image";
 export default function RecommendationsPage() {
   const [recommendations, setRecommendations] = useState<string[][]>([]);
   const [sortOption, setSortOption] = useState("Name A–Z");
@@ -37,7 +38,7 @@ export default function RecommendationsPage() {
           <div className="relative">
             <button
               onClick={() => setShowSortMenu((prev) => !prev)}
-              className="flex items-center gap-2 px-4 py-2 bg-white text-sm font-medium text-neutral-800 rounded-md border hover:shadow-xs transition"
+              className="flex items-center gap-2 px-4 py-2 bg-neutral-200 text-sm font-medium text-neutral-800 rounded-md border hover:shadow-xs transition"
             >
               Sort: {sortOption}
               <ChevronDown className="w-4 h-4" />
@@ -73,21 +74,25 @@ export default function RecommendationsPage() {
             {sortedRecommendations.map((uni, idx) => (
               <div
                 key={idx}
-                className="bg-white rounded-xl p-6 border-1 border-neutral-200 flex items-start justify-between hover:shadow-sm transition-shadow"
+                className="bg-white rounded-xl p-6 border border-neutral-200 flex items-start gap-4 hover:shadow-sm transition-shadow"
               >
-                <div className="flex items-start gap-3">
-                  <div className="text-blue-800 pt-1 text-xl">🏛️</div>
-
-                  <div className="space-y-2 max-w-xl">
-                    <h2 className="text-lg font-bold text-neutral-950">
-                      {uni[0].replace(/^\d+\.\s\*\*/, "").replace(/\*\*/g, "")}
-                    </h2>
-                    <p className="text-neutral-700 text-sm leading-snug">
-                      {uni[2].replace("- **Explanation:**", "").trim()}
-                    </p>
-                  </div>
+                <div className="relative w-40 h-32 flex-shrink-0 rounded-md overflow-hidden">
+                  <Image
+                    src="/image.png"
+                    alt="University"
+                    fill
+                    className="object-cover"
+                  />
                 </div>
-                <ArrowRight className="min-w-8 hover:min-w-5 text-neutral-500 mt-1" />
+                <div className="space-y-2 flex-1">
+                  <h2 className="text-lg font-bold text-neutral-950">
+                    {uni[0].replace(/^\d+\.\s\*\*/, "").replace(/\*\*/g, "")}
+                  </h2>
+                  <p className="text-neutral-700 text-sm leading-snug">
+                    {uni[2].replace("- **Explanation:**", "").trim()}
+                  </p>
+                </div>
+                <ArrowRight className="min-w-8 hover:min-w-5 text-neutral-700 mt-1" />
               </div>
             ))}
           </div>
@@ -95,12 +100,10 @@ export default function RecommendationsPage() {
 
         {recommendations.length > 0 && (
           <div className="text-center mt-10">
-            <p className="text-neutral-400 mb-3">
+            <p className="text-neutral-800 mb-3">
               Continue exploring close matches
             </p>
-            <button className="px-4 py-2 bg-black text-white rounded-md hover:bg-neutral-800 transition">
-              See more
-            </button>
+            <Button>See more</Button>
           </div>
         )}
       </div>
