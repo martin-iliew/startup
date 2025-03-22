@@ -1,12 +1,13 @@
 "use client";
+
 import { useEffect, useState } from "react";
-import { ArrowRight, ChevronDown } from "lucide-react";
+import { ArrowRight, SlidersHorizontal } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import Image from "next/image";
+
 export default function RecommendationsPage() {
   const [recommendations, setRecommendations] = useState<string[][]>([]);
-  const [sortOption, setSortOption] = useState("Name A–Z");
-  const [showSortMenu, setShowSortMenu] = useState(false);
 
   useEffect(() => {
     const saved = sessionStorage.getItem("universityRecommendations");
@@ -23,55 +24,63 @@ export default function RecommendationsPage() {
     setRecommendations(parsed);
   }, []);
 
-  const sortedRecommendations = [...recommendations].sort((a, b) => {
-    const nameA = a[0].toLowerCase();
-    const nameB = b[0].toLowerCase();
-    return sortOption === "Name A–Z"
-      ? nameA.localeCompare(nameB)
-      : nameB.localeCompare(nameA);
-  });
-
   return (
     <div className="min-h-screen bg-neutral-50 py-10 px-4">
       <div className="max-w-5xl mx-auto">
+        {/* Filter Button */}
         <div className="flex justify-end mb-6 relative z-10">
-          <div className="relative">
-            <button
-              onClick={() => setShowSortMenu((prev) => !prev)}
-              className="flex items-center gap-2 px-4 py-2 bg-neutral-200 text-sm font-medium text-neutral-800 rounded-md border hover:shadow-xs transition"
-            >
-              Sort: {sortOption}
-              <ChevronDown className="w-4 h-4" />
-            </button>
+          <Dialog>
+            <DialogTrigger asChild>
+              <Button
+                variant="outline"
+                className="bg-neutral-200 text-neutral-900 border rounded-xl px-4 py-2 flex items-center gap-2 shadow-sm hover:bg-neutral-300 transition"
+              >
+                <SlidersHorizontal className="w-4 h-4" />
+                <span>Filter</span>
+              </Button>
+            </DialogTrigger>
+            <DialogContent className="backdrop-blur-md bg-white/80 border border-neutral-300 shadow-xl rounded-2xl max-w-md p-6">
+              <h2 className="text-lg font-semibold mb-4">Filter Options</h2>
+              <div className="space-y-3">
+                {/* Example filters - you can replace with your real ones */}
+                <div>
+                  <label className="block text-sm font-medium text-neutral-700 mb-1">
+                    Location
+                  </label>
+                  <select className="w-full px-3 py-2 border rounded-md text-sm">
+                    <option>Any</option>
+                    <option>USA</option>
+                    <option>Canada</option>
+                    <option>Europe</option>
+                  </select>
+                </div>
 
-            {showSortMenu && (
-              <div className="absolute right-0 mt-2 w-40 bg-white border rounded-md shadow-md">
-                {["Name A–Z", "Name Z–A"].map((option) => (
-                  <button
-                    key={option}
-                    onClick={() => {
-                      setSortOption(option);
-                      setShowSortMenu(false);
-                    }}
-                    className={`w-full text-left px-4 py-2 text-sm hover:bg-neutral-100 ${
-                      sortOption === option ? "font-semibold" : ""
-                    }`}
-                  >
-                    {option}
-                  </button>
-                ))}
+                <div>
+                  <label className="block text-sm font-medium text-neutral-700 mb-1">
+                    Tuition
+                  </label>
+                  <select className="w-full px-3 py-2 border rounded-md text-sm">
+                    <option>Any</option>
+                    <option>Free</option>
+                    <option>Under $10,000</option>
+                    <option>Over $10,000</option>
+                  </select>
+                </div>
+
+                <Button className="w-full mt-4">Apply Filters</Button>
               </div>
-            )}
-          </div>
+            </DialogContent>
+          </Dialog>
         </div>
 
+        {/* Recommendations */}
         {recommendations.length === 0 ? (
           <p className="text-neutral-400 text-lg text-center">
             Loading recommendations...
           </p>
         ) : (
           <div className="space-y-4">
-            {sortedRecommendations.map((uni, idx) => (
+            {recommendations.map((uni, idx) => (
               <div
                 key={idx}
                 className="bg-white rounded-xl p-6 border border-neutral-200 flex items-start gap-4 hover:shadow-sm transition-shadow"
