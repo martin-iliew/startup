@@ -20,10 +20,10 @@ interface ResultData {
   recommendations: Recommendation[];
 }
 
-export default async function RecommendationsPage({
+export default async function Page({
   searchParams,
 }: {
-  searchParams?: { [key: string]: string | string[] | undefined };
+  searchParams?: { [key: string]: string | string[] };
 }) {
   const idParam = searchParams?.id;
   const resultId = Array.isArray(idParam) ? idParam[0] : idParam;
@@ -98,6 +98,7 @@ export default async function RecommendationsPage({
               key={rec.major}
               className="bg-white rounded-xl p-6 border border-neutral-200 flex flex-col md:flex-row items-start gap-4 hover:shadow-sm transition-shadow"
             >
+              {/* Image on left */}
               <div className="relative w-full md:w-40 h-32 flex-shrink-0 rounded-md overflow-hidden">
                 <Image
                   src="/image.png"
@@ -106,6 +107,8 @@ export default async function RecommendationsPage({
                   className="object-cover"
                 />
               </div>
+
+              {/* Text content */}
               <div className="space-y-2 flex-1">
                 <h2 className="text-lg font-bold text-neutral-950">
                   {rec.major}
@@ -134,6 +137,8 @@ export default async function RecommendationsPage({
                   ))}
                 </ul>
               </div>
+
+              {/* Arrow Icon */}
               <ArrowRight className="text-neutral-600 mt-1 md:mt-0" />
             </div>
           ))}
