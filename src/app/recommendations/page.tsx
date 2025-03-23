@@ -21,13 +21,15 @@ interface ResultData {
 }
 
 interface RecPageProps {
-  searchParams: { id?: string };
+  searchParams?: { [key: string]: string | string[] | undefined };
 }
 
 export default async function RecommendationsPage({
   searchParams,
 }: RecPageProps) {
-  const resultId = searchParams.id;
+  const idParam = searchParams?.id;
+  const resultId = Array.isArray(idParam) ? idParam[0] : idParam;
+
   let resultData: ResultData | null = null;
 
   if (resultId) {
