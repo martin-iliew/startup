@@ -2,7 +2,8 @@
 
 import { useEffect, useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
-import { MobileMenuToggle } from "./ui/mobile-menu-toggle";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Menu } from "lucide-react";
 import Link from "next/link";
 import BrandLogo from "./ui/logo";
 
@@ -84,35 +85,46 @@ const Header = () => {
           <div className="right flex items-center gap-4">
             {/* Desktop buttons */}
             <div className="hidden xl:flex gap-4">
-              <Link href="/login">
-                <Button variant="ghost" className="text-stone-950">
-                  Влизане
-                </Button>
-              </Link>
-              <Link href="/register">
-                <Button>Регистриране</Button>
-              </Link>
+              <Button variant="ghost" size={"lg"} className="text-stone-950">
+                Log in
+              </Button>
+              <Button size={"lg"}>Register</Button>
             </div>
 
             {/* Mobile menu */}
-            <div
-              role="navigation"
-              aria-label="Mobile Menu"
-              className="flex xl:hidden relative"
-              ref={menuRef}
-            >
-              <MobileMenuToggle
-                menuOpen={menuOpen}
-                setMenuOpen={setMenuOpen}
-                aria-expanded={menuOpen}
-              />
-              {menuOpen && (
-                <div className="absolute top-full left-0 w-full bg-white shadow-md p-10 flex flex-col gap-4">
-                  <Link href="/" className="block">
-                    Home
-                  </Link>
-                </div>
-              )}
+            <div className="xl:hidden">
+              <Sheet open={menuOpen} onOpenChange={setMenuOpen}>
+                <SheetTrigger asChild>
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    aria-label="Toggle Menu"
+                    className="p-2 sm:p-2.5 md:p-3"
+                  >
+                    <Menu className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10" />
+                  </Button>
+                </SheetTrigger>
+
+                <SheetContent side="top" className="h-screen p-8">
+                  <nav className="flex flex-col gap-4 mt-12 w-full text-center">
+                    <Button
+                      variant="outline"
+                      size="lg"
+                      className="w-full justify-center text-lg"
+                      onClick={() => setMenuOpen(false)}
+                    >
+                      Log in
+                    </Button>
+                    <Button
+                      size="lg"
+                      className="w-full justify-center text-lg"
+                      onClick={() => setMenuOpen(false)}
+                    >
+                      Register
+                    </Button>
+                  </nav>
+                </SheetContent>
+              </Sheet>
             </div>
           </div>
         </div>

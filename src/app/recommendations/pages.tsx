@@ -1,8 +1,14 @@
 export const dynamic = "force-dynamic";
+
 import { getResult } from "@/lib/redis";
 import Image from "next/image";
 import { SlidersHorizontal, ArrowRight } from "lucide-react";
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 
 interface University {
@@ -60,6 +66,7 @@ export default async function RecommendationsPage({
               </Button>
             </DialogTrigger>
             <DialogContent className="backdrop-blur-md bg-white/80 border border-neutral-300 shadow-xl rounded-2xl max-w-md p-6">
+              <DialogTitle className="sr-only">Filter Options</DialogTitle>
               <h2 className="text-lg font-semibold mb-4">Filter Options</h2>
               <div className="space-y-3">
                 <div>
@@ -92,7 +99,6 @@ export default async function RecommendationsPage({
           </Dialog>
         </div>
 
-        {/* Major Recommendations */}
         <div className="space-y-6">
           {resultData.recommendations.map((rec) => (
             <div

@@ -1,6 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { Header } from "@/components/Header";
 import Image from "next/image";
+import { CheckCircle } from "lucide-react";
+import Link from "next/link";
 export default function HomePage() {
   return (
     <>
@@ -35,12 +37,9 @@ export default function HomePage() {
 
               {/* Desktop CTA */}
               <div className="mt-6 hidden md:block">
-                <Button
-                  size="lg"
-                  className="rounded-full bg-stone-900 text-white px-8 py-4 text-base font-semibold"
-                >
-                  Get Started
-                </Button>
+                <Link href="/quiz">
+                  <Button size="lg">Take the quiz</Button>
+                </Link>
               </div>
             </div>
 
@@ -58,135 +57,36 @@ export default function HomePage() {
                   />
                 </div>
               </div>
-              <Button
-                size="lg"
-                className="rounded-full bg-stone-900 text-white px-6 py-3 text-sm font-semibold"
-              >
-                Get Started
-              </Button>
+              <Link href="/quiz">
+                <Button size="lg">Take the quiz</Button>
+              </Link>
             </div>
           </div>
         </div>
       </section>
-
-      <section
-        aria-label="Hero Section"
-        className="py-12 sm:py-16 lg:py-24 h-svh -mt-14`"
-      >
-        <div className="section-offset">
-          <div className="grid-layout">
-            <div className="col-span-4 md:col-span-8 lg:col-span-12 flex flex-col justify-center gap-6 text-center">
-              {" "}
-              <h1 className="text-4xl sm:text-5xl lg:text-5xl font-black uppercase text-center">
-                Направете своя разход добре <br /> изразходван
-              </h1>
-              <p className="text-lg sm:text-xl lg:text-2xl text-gray-800">
-                Купувате хранителни продукти? Получете RevPoints. Когато сте в
-                Япония? Харчете в йени. Важна промяна в живота? Опитайте
-                Съвместна сметка. Както и да харчите – Revolut е всичко, от
-                което се нуждаете.
-              </p>
-            </div>
-            <div className="col-span-12 text-center">
-              <Button variant="default" size="lg">
-                Преместете заплатата си
-              </Button>
-            </div>
+      <section className="bg-white border-t">
+        <div className="max-w-7xl mx-auto px-4 py-6 grid grid-cols-1 sm:grid-cols-3 gap-6 text-center">
+          <div className="flex items-center justify-center gap-3">
+            <CheckCircle className="text-green-500 w-6 h-6" />
+            <p className="text-sm sm:text-base font-semibold text-stone-900">
+              Personalized Results
+            </p>
+          </div>
+          <div className="flex items-center justify-center gap-3">
+            <CheckCircle className="text-green-500 w-6 h-6" />
+            <p className="text-sm sm:text-base font-semibold text-stone-900">
+              Compare Options
+            </p>
+          </div>
+          <div className="flex items-center justify-center gap-3">
+            <CheckCircle className="text-green-500 w-6 h-6" />
+            <p className="text-sm sm:text-base font-semibold text-stone-900">
+              Saves Time & Effort
+            </p>
           </div>
         </div>
-      </section>
-      <section
-        aria-label="Hero Section"
-        className="py-12 sm:py-16 lg:py-24 h-svh -mt-14`"
-      >
-        <div className="section-offset">
-          <div className="grid-layout">
-            <div className="col-span-4 md:col-span-8 lg:col-span-12 flex flex-col justify-center gap-6 ">
-              <h1 className="text-4xl sm:text-5xl lg:text-5xl font-black uppercase text-center">
-                Направете своя разход добре <br /> изразходван
-              </h1>
-              <p className="text-lg sm:text-xl lg:text-2xl text-gray-800">
-                Купувате хранителни продукти? Получете RevPoints. Когато сте в
-                Япония? Харчете в йени. Важна промяна в живота? Опитайте
-                Съвместна сметка. Както и да харчите – Revolut е всичко, от
-                което се нуждаете.
-              </p>
-              <div className="flex flex-col md:flex-row gap-4">
-                <Button variant="default" size="lg">
-                  Нашите услуги
-                </Button>
-                <Button variant="outline" size="lg">
-                  Свържете се с нас
-                </Button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section
-        aria-label="Hero Section"
-        className="py-12 sm:py-16 lg:py-24 h-svh -mt-14`"
-      ></section>
-      <section
-        aria-label="Hero Section"
-        className="py-12 sm:py-16 lg:py-24 min-h-svh -mt-14 bg-sidebar-primary"
-      >
-        <div className="section-offset">
-          <div className="grid-layout gap-5">
-            {/* Standard Card */}
-            <div className="col-span-4  bg-white text-gray-800 p-6 rounded-3xl shadow-lg">
-              <h3 className="text-xl font-semibold">Standard</h3>
-              <p className="text-md font-semibold">Безплатно</p>
-              <p className="text-gray-600">
-                Изпращане на пари в чужбина или придържане към бюджета с помощта
-                на вградени инструменти - независимо от нуждите ви, получавайте
-                повече от парите си с нашата сметка Standard.
-              </p>
-            </div>
-
-            {/* Plus Card */}
-            <div className="col-span-4 bg-white text-gray-800 p-6 rounded-3xl shadow-lg">
-              <h3 className="text-xl font-semibold">Plus</h3>
-              <p className="text-md font-semibold">7,99 лв/м.</p>
-              <p className="text-gray-600">
-                Насладете се на допълнителни предимства като приоритетна
-                поддръжка в приложението и защита на ежедневните разходи за
-                по-малко от цената на едно кафе. Всичко това и още, с Plus.
-              </p>
-            </div>
-
-            {/* Premium Card */}
-            <div className="col-span-4 bg-white text-gray-800 p-6 rounded-3xl shadow-lg">
-              <h3 className="text-xl font-semibold">Premium</h3>
-              <p className="text-md font-semibold">15,99 лв/м.</p>
-              <p className="text-gray-600">
-                Открийте гъвкави облаги, които отговарят на живота ви у дома и
-                ви отвеждат по целия свят. Спестявайте, харчете, изпращайте и
-                инвестирайте по-разумно с Premium.
-              </p>
-            </div>
-
-            {/* Metal Card */}
-            <div className="col-span-6 bg-white text-gray-800 p-6 rounded-3xl shadow-lg">
-              <h3 className="text-xl font-semibold">Metal</h3>
-              <p className="text-md font-semibold">29,99 лв/м.</p>
-              <p className="text-gray-600">
-                Насладете се на по-високи лимити за инвестиции, глобални разходи
-                и още, както и на редица облаги, подобряващи начина на живот –
-                всичко това в Metal.
-              </p>
-            </div>
-            {/* Ultra Card */}
-            <div className="col-span-6 bg-white text-gray-800 p-6 rounded-3xl shadow-lg">
-              <h3 className="text-xl font-semibold">Ultra</h3>
-              <p className="text-md font-semibold">90 лв/м.</p>
-              <p className="text-gray-600">
-                Опитайте изключителното, включващо ексклузивни облаги за начина
-                на живот, пътувания от световна класа и прецизно изработена
-                карта с платинено покритие.
-              </p>
-            </div>
-          </div>
+        <div className="bg-neutral-100 text-center text-xs text-neutral-500 py-2">
+          StartUP Weekend 2025
         </div>
       </section>
     </>
