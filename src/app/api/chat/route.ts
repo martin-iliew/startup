@@ -22,7 +22,7 @@ export async function POST(req: NextRequest) {
     const prompt = message.trim();
     console.log("💬 Sending to OpenAI:", prompt);
 
-    const raw = await redis.lrange("chat:history", 0, 9); 
+    const raw = await redis.lrange("chat:history", 0, 9);
     const parsedHistory = raw
       .map((entry) => {
         try {
@@ -63,7 +63,7 @@ export async function POST(req: NextRequest) {
 
     try {
       await redis.lpush("chat:history", redisEntry);
-      await redis.ltrim("chat:history", 0, 49); 
+      await redis.ltrim("chat:history", 0, 49);
       console.log("✅ Saved to Redis");
     } catch (redisError) {
       console.warn("⚠️ Failed to save to Redis:", redisError);

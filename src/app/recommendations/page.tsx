@@ -20,13 +20,12 @@ interface ResultData {
   recommendations: Recommendation[];
 }
 
-export default async function Page({
-  searchParams,
-}: {
-  searchParams?: { [key: string]: string | string[] };
-}) {
-  const idParam = searchParams?.id;
-  const resultId = Array.isArray(idParam) ? idParam[0] : idParam;
+export default async function Page() {
+  const searchParams = new URLSearchParams(
+    typeof window === "undefined" ? "" : window.location.search
+  );
+
+  const resultId = searchParams.get("id");
 
   let resultData: ResultData | null = null;
 
@@ -42,7 +41,6 @@ export default async function Page({
       </div>
     );
   }
-
   return (
     <div className="min-h-screen bg-neutral-50 py-10 px-4">
       <div className="max-w-5xl mx-auto">
