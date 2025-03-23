@@ -1,5 +1,3 @@
-export const dynamic = "force-dynamic";
-
 import { getResult } from "@/lib/redis";
 import Image from "next/image";
 import { SlidersHorizontal, ArrowRight } from "lucide-react";
