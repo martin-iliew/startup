@@ -12,7 +12,6 @@ const Header = () => {
   const menuRef = useRef<HTMLDivElement>(null);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [hidden, setHidden] = useState(false);
-  const [bgWhite, setBgWhite] = useState(false);
 
   // Scroll handling: hide on scroll down, show on scroll up
   useEffect(() => {
@@ -22,8 +21,6 @@ const Header = () => {
       if (!ticking) {
         window.requestAnimationFrame(() => {
           const currentScrollY = window.scrollY;
-          setBgWhite(currentScrollY > 50);
-
           if (currentScrollY > lastScrollY && currentScrollY > 100) {
             setHidden(true); // Hide header on scroll down
           } else {
@@ -64,13 +61,9 @@ const Header = () => {
   return (
     <header
       role="banner"
-      className={`fixed top-0 z-50 w-full font-title transition-transform duration-300 ${
+      className={`fixed top-0 z-50 w-full font-title transition-transform duration-300 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80 shadow-md ${
         hidden ? "-translate-y-full" : "translate-y-0"
-      } ${
-        bgWhite
-          ? "bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80 shadow-md"
-          : ""
-      }`}
+      } `}
     >
       <div className="section-offset">
         <div className="flex h-18 items-center justify-between">
