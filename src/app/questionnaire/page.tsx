@@ -64,11 +64,6 @@ const questions: Question[] = [
     options: ["Less than $5,000", "$5,000 - $15,000", "$15,000+", "No limit"],
   },
   {
-    question: "Do you prefer free or paid education?",
-    type: "select",
-    options: ["Free", "Paid", "Doesn't matter"],
-  },
-  {
     question: "Are you open to online universities?",
     type: "select",
     options: ["Yes", "No", "Maybe"],

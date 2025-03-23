@@ -99,26 +99,6 @@ export const questions: Question[] = [
     ],
   },
   {
-    id: "education_cost_preference",
-    text: "Do you prefer free or paid education?",
-    type: "single",
-    options: [
-      { value: "free", label: "Free" },
-      { value: "paid", label: "Paid" },
-      { value: "doesnt_matter", label: "Doesn't matter" },
-    ],
-  },
-  {
-    id: "open_online",
-    text: "Are you open to online universities?",
-    type: "single",
-    options: [
-      { value: "yes", label: "Yes" },
-      { value: "no", label: "No" },
-      { value: "maybe", label: "Maybe" },
-    ],
-  },
-  {
     id: "academic_strength",
     text: "How strong are your academic results?",
     type: "single",

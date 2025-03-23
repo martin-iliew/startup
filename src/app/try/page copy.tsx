@@ -419,7 +419,10 @@ export default function Page() {
                   >
                     <div className="relative w-full md:w-40 h-24 sm:h-32 flex-shrink-0 rounded-md overflow-hidden bg-neutral-100">
                       <Image
-                        src={uni.image}
+                        src={`/placeholder.svg?height=300&width=400&text=${uni.name.substring(
+                          0,
+                          10
+                        )}...`}
                         alt={uni.name}
                         fill
                         className="object-cover group-hover:scale-105 transition-transform"
